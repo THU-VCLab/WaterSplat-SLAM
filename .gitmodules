@@ -1,0 +1,14 @@
+[submodule "thirdparty/eigen"]
+	path = thirdparty/eigen
+	url = https://gitlab.com/libeigen/eigen.git
+[submodule "thirdparty/in3d/thirdparty/pyimgui"]
+	path = thirdparty/in3d/thirdparty/pyimgui
+	url = https://github.com/pyimgui/pyimgui.git
+[submodule "thirdparty/simple-knn"]
+	path = thirdparty/simple-knn
+[submodule "thirdparty/tiny-cuda-nn"]
+	path = thirdparty/tiny-cuda-nn
+	url = https://github.com/NVlabs/tiny-cuda-nn.git
+[submodule "thirdparty/fused-ssim"]
+	path = thirdparty/fused-ssim
+	url = https://github.com/rahul-goel/fused-ssim.git

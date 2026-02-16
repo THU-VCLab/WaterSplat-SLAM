@@ -1,12 +1,20 @@
-# WaterSplat-SLAM: Photorealistic Monocular SLAM in Underwater Environment
+<h2 align="center">
+WaterSplat-SLAM: Photorealistic Monocular SLAM in Underwater Environment
+</h2>
+
 <p align="center">
-Kangxu Wang,
-Shaofeng Zou
+Kangxu Wang<sup>*</sup> · 
+Shaofeng Zou<sup>*</sup> · 
+Chenxing Jiang<sup>*</sup> · 
+Yixiang Dai<sup></sup> · 
+Siang Chen<sup></sup> · 
+Shaojie Shen<sup></sup> · 
+Guijin Wang<sup>†</sup>
 </p>
 
-<h3 align="center">
+<!-- <h3 align="center">
     <a href="https://arxiv.org/pdf/####">📄 Paper</a> | <a href="#">🌐 Project Page</a>
-</h3>
+</h3> -->
 <div align="center">
     <img alt="WaterSplat-SLAM" src=".assets/pipeline.png" />
 </div>
@@ -15,6 +23,7 @@ Shaofeng Zou
 Specifically, we combine semantic medium filtering with a dual-view 3D reconstruction prior to achieve underwater adaptive camera tracking and depth estimation. Furthermore, we propose a semantically guided rendering and adaptive map management strategy, combined with an online medium-aware Gaussian map, to model the underwater environment in a photorealistic and compact manner. Experiments on multiple underwater datasets demonstrate that WaterSplat-SLAM achieves robust camera tracking and high-fidelity rendering in underwater environments.
 <br>
 
+# Code is coming soon
 
 ## Installation
 ### Prerequisites
@@ -24,7 +33,7 @@ Specifically, we combine semantic medium filtering with a dual-view 3D reconstru
 
 ### 1. Create Environment
 ```bash
-git clone git@github.com:knightzzz9w/WaterSplatting-SLAM.git --recursive
+git clone git@github.com:KX-Wang77/WaterSplat-SLAM.git --recursive
 ```
 
 if you've clone the repo without --recursive run
@@ -54,7 +63,16 @@ conda install pytorch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 pytorch-cuda=
 pip install -e thirdparty/mast3r
 pip install -e thirdparty/in3d
 pip install -e thirdparty/simple-knn
+pip install -e thirdparty/fused-ssim
 pip install --no-build-isolation -e .
+```
+Setup the checkpoints for MASt3R and retrieval. The license for the checkpoints and more information on the datasets used is written here.
+
+```bash
+mkdir -p checkpoints/
+wget https://download.europe.naverlabs.com/ComputerVision/MASt3R/MASt3R_ViTLarge_BaseDecoder_512_catmlpdpt_metric.pth -P checkpoints/
+wget https://download.europe.naverlabs.com/ComputerVision/MASt3R/MASt3R_ViTLarge_BaseDecoder_512_catmlpdpt_metric_retrieval_trainingfree.pth -P checkpoints/
+wget https://download.europe.naverlabs.com/ComputerVision/MASt3R/MASt3R_ViTLarge_BaseDecoder_512_catmlpdpt_metric_retrieval_codebook.pkl -P checkpoints/
 ```
 
 ### 4. Install Gaussian Backen
@@ -66,11 +84,11 @@ pip install -e . # install cudalight in local
 
 ```bash
 pip install ninja
-git clone --recursive https://github.com/NVlabs/tiny-cuda-nn
-cd tiny-cuda-nn
+cd thirdparty/tiny-cuda-nn
 cmake . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo
 cmake --build build --config RelWithDebInfo -j
 cd bindings/torch
 python setup.py install
 sudo apt updata
 ```
+
