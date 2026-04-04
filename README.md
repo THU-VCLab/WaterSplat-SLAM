@@ -175,28 +175,23 @@ python main.py --dataset <path_to_dataset> --config config/Panama.yaml
 
 When `--dataset_type` is omitted or set to `auto`, the system detects the format from the dataset path. For datasets with custom intrinsics (e.g., ROV cameras), use `--dataset_type rgbfiles` with `--calib` pointing to a calibration YAML file.
 
-### Example: SeathruNeRF Underwater Datasets
+### Example: Single Scene
 
 ```bash
-# Panama
 python main.py --dataset /path/to/SeathruNeRF/Panama --config config/Panama.yaml
-# Curasao
-python main.py --dataset /path/to/SeathruNeRF/Curasao --config config/Curasao.yaml
-# JapaneseGardens-RedSea
-python main.py --dataset /path/to/SeathruNeRF/JapaneseGardens --config config/Jap_RedSea.yaml
-# IUI3-RedSea
-python main.py --dataset /path/to/SeathruNeRF/IUI3 --config config/RedSea.yaml
 ```
 
-### Example: WaterSplat-SLAM Datasets
+Scene-specific configs are provided in `config/` for SeathruNeRF scenes (Panama, Curasao, Jap_RedSea, RedSea) and WaterSplat-SLAM scenes (pool_up, pool_up2, 5_pool, pipe_local, big_gate, undistorted5).
+
+### Batch Evaluation
+
+Run all underwater datasets at once:
 
 ```bash
-python main.py --dataset /path/to/pool_up --config config/pool_up.yaml
-python main.py --dataset /path/to/pool_up2 --config config/pool_up2.yaml
-python main.py --dataset /path/to/5_pool --config config/5_pool.yaml
-python main.py --dataset /path/to/pipe_local --config config/pipe_local.yaml
-python main.py --dataset /path/to/big_gate --config config/big_gate.yaml
+bash scripts/run_our_data.sh /path/to/dataset_root
 ```
+
+This script automatically finds and runs all available scenes under the given root directory with their corresponding configs.
 
 ### Example: Custom Underwater Data
 
