@@ -1,0 +1,28 @@
+inherit: "config/base.yaml"
+
+use_calib: True
+dataset:
+  type: colmap
+  subsample: 1
+  img_downsample: 1
+  image_subdir: images_wb
+  sparse_dir: sparse/0
+  center_principle_point: True
+
+tracking:
+  match_frac_thresh: 0.4
+
+training:
+  use_kf_BA: False
+  kf_overlap: 0.1
+  new_mapping_iter: 50
+  normal_mapping_iters: 20
+  opacity_thre: 0.99
+  compensate_exposure: True
+
+color_refine:
+  color_refinement_iters: 300
+
+save_results: True
+output:
+  base_dir: "outputs/Jap_RedSea"

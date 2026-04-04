@@ -1,4 +1,5 @@
 checkpoints/
+weights/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -143,7 +144,6 @@ notebooks/*
 .vscode/*
 checkpoints/*
 /checkpoints/
-thirdparty/diff-gaussian-rasterization-w-pose/
 /.vscode/
 checkpoints
 .idea/*
@@ -157,3 +157,6 @@ psnr/final_result.json
 # outputs and images
 outputs/*
 object_images/*
+
+# docs 
+docs/

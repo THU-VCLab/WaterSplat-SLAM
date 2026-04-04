@@ -1,0 +1,56 @@
+inherit: "config/base.yaml"
+
+use_calib: True
+dataset:
+  type: colmap
+  subsample: 1
+  img_downsample: 1
+
+tracking:
+  match_frac_thresh: 0.5
+
+training:
+  use_depth_loss: False
+  use_iso_loss: True
+  kf_overlap: 0.7
+  nonkf_refinement_iters: 50
+  text_prompt: "dark blue water."
+  compensate_exposure: True
+  new_mapping_iter: 50
+  normal_mapping_iters: 20
+  opacity_thre: 0.99
+
+color_refine:
+  max_gaussian_points: 300000
+  sh_max: 0
+  config_sh_degree_interval: 1000
+  clip_thresh: 0.01
+  color_refinement_iters: 250
+  refine_every: 100
+  gaussian_update_every: 100
+  gaussian_update_offset: 0
+  densify_grad_threshold: 0.000005
+  gaussian_th_refine: 0.5
+  gaussian_extent_refine: 5
+  size_threshold_refine: 100
+  cull_alpha_thresh: 0.5
+  cull_alpha_thresh_post: 0.1
+  reset_alpha_thresh: 0.01
+  cull_scale_thresh: 12
+  reset_alpha_every: 5
+  densify_grad_thresh: 0.0008
+  densify_size_thresh: 0.001
+  n_split_samples: 2
+  cull_screen_size: 60
+  split_screen_size: 0.05
+  stop_screen_size_at: 5000
+  stop_split_at: 10000
+  densify_until_iter: 15_000
+  densify_from_iter: 500
+  densification_interval: 100
+  opacity_reset_interval: 3000
+  cameras_extent: 10
+
+save_results: True
+output:
+  base_dir: "outputs/big_gate"

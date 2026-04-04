@@ -1,0 +1,34 @@
+inherit: "config/base.yaml"
+
+use_calib: True
+dataset:
+  type: colmap
+  subsample: 1
+  img_downsample: 1
+  image_subdir: images_wb # default
+  #image_subdir: white_balance_perfect # default
+  #image_subdir: balance_image
+  sparse_dir: sparse/0 # where camera.bin
+  center_principle_point: True
+
+tracking:
+  match_frac_thresh: 0.5
+
+training:
+  use_kf_BA: False
+  kf_overlap: 0.1
+  new_mapping_iter: 50
+  normal_mapping_iters: 40
+  opacity_thre: 0.99
+  compensate_exposure: True
+
+color_refine:
+  max_gaussian_points: 300000
+  sh_max: 0
+  config_sh_degree_interval: 1000
+  clip_thresh: 0.01
+  color_refinement_iters: 600
+
+save_results: True
+output:
+  base_dir: "outputs/Panama"

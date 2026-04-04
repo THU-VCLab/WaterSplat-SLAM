@@ -1,0 +1,26 @@
+inherit: "config/base.yaml"
+
+use_calib: True
+dataset:
+  type: colmap
+  subsample: 1
+  image_subdir: images
+  img_downsample: 1
+
+tracking:
+  match_frac_thresh: 0.5
+
+training:
+  use_depth_loss: False
+  use_iso_loss: True
+  kf_overlap: 0.7
+  nonkf_refinement_iters: 50
+  text_prompt: "blue door."
+  compensate_exposure: True
+  new_mapping_iter: 50
+  normal_mapping_iters: 20
+  opacity_thre: 0.99
+
+save_results: True
+output:
+  base_dir: "outputs/5_pool"

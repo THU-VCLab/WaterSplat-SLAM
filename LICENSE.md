@@ -1,4 +1,4 @@
-Copyright [2025–present]
+Copyright (c) 2025-present, Tsinghua University and collaborators.
 
 WaterSplat-SLAM is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 license.
 

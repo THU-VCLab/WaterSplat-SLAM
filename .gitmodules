@@ -6,6 +6,7 @@
 	url = https://github.com/pyimgui/pyimgui.git
 [submodule "thirdparty/simple-knn"]
 	path = thirdparty/simple-knn
+	url = https://gitlab.inria.fr/bkerbl/simple-knn.git
 [submodule "thirdparty/tiny-cuda-nn"]
 	path = thirdparty/tiny-cuda-nn
 	url = https://github.com/NVlabs/tiny-cuda-nn.git

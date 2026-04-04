@@ -1,0 +1,199 @@
+use_calib: False
+single_thread: True
+
+output:
+  base_dir: "outputs/default"
+  gs_dir: "./outputs"
+  eval_traj: True
+
+results:
+  save_results: True
+  save_trj: True
+  save_trj_kf_intv: 10
+  use_gui: True
+  eval_rendering: False
+  use_wandb: False
+
+dataset:
+  subsample: 1
+  img_downsample: 1
+  center_principle_point: True
+  type: auto
+  pcd_downsample: 32
+  pcd_downsample_init: 32
+  adaptive_pointsize: False
+  point_size: 0.2
+  scale_multiplier: 2.0
+  start_id: 0
+  final_id: 1000
+  buffer: 256
+
+matching:
+  max_iter: 10
+  lambda_init: 1e-8
+  convergence_thresh: 1e-6
+  dist_thresh: 1e-1
+  radius: 3
+  dilation_max: 5
+
+tracking:
+  min_match_frac: 0.05
+  max_iters: 50
+  C_conf: 0.0
+  Q_conf: 1.5
+  rel_error: 1e-3
+  delta_norm: 1e-3
+  huber: 1.345
+  match_frac_thresh: 0.333
+  sigma_ray: 0.003
+  sigma_dist: 1e+1
+  sigma_pixel: 1.0
+  sigma_depth: 1e+1
+  sigma_point: 0.05
+  pixel_border: -10
+  depth_eps: 1e-6
+  filtering_mode: weighted_pointmap
+  filtering_score: median
+
+local_opt:
+  pin: 1
+  window_size: 1e+6
+  C_conf: 0.0
+  Q_conf: 1.5
+  min_match_frac: 0.1
+  pixel_border: -10
+  depth_eps: 1e-6
+  max_iters: 10
+  sigma_ray: 0.003
+  sigma_dist: 1e+1
+  sigma_pixel: 1.0
+  sigma_depth: 1e+1
+  sigma_point: 0.05
+  delta_norm: 1e-8
+  use_cuda: True
+
+retrieval:
+  k: 3
+  min_thresh: 5e-3
+
+reloc:
+  min_match_frac: 0.3
+  strict: True
+  min_lc_dist: 50
+
+training:
+  init_itr_num: 1050
+  init_gaussian_update: 100
+  init_gaussian_reset: 500
+  init_gaussian_th: 0.005
+  init_gaussian_extent: 5
+  gaussian_update_every: 300
+  global_gaussian_update_every: 300
+  gaussian_update_offset: 50
+  gaussian_th: 0.005
+  gaussian_th_refine: 0.35
+  gaussian_extent: 3
+  gaussian_extent_refine: 10
+  gaussian_reset: 1001
+  size_threshold: 50
+  size_threshold_refine: 100
+  window_size: 10
+  rgb_boundary_threshold: 0.01
+  lambda_dnormal: 0.5
+  compensate_exposure: True
+  normal_iters: 10
+  rot_thre: 7.0
+  trans_thre: 0.15
+  normal_mapping_cur_frame: 5
+  normal_mapping_past_frame: 3
+  normal_mapping_iters: 10
+  frame_up_ratio: 0.3
+  opacity_thre: 0.7
+  init_alpha: 0.95
+  alpha: 0.4
+  glomap_outiters: 10
+  glomap_initers: 15
+  glomap_window: 10
+  new_mapping_iter: 10
+  embedded_dim: 128
+  L_degree: 4
+  layer_num: 4
+  white_balance_loss: True
+  bs_loss_enable: True
+  gray_loss_enable: true
+  lambda_rgb_loss: 0.95
+  lambda_white_balance_loss: 0.1
+  lambda_bs_loss: 0.1
+  lambda_gray_loss: 0.1
+  gsplat: True
+  antialiasing: True
+  xyz_gradient_attnratio: 4 
+  refinement_xyz_gradient_attnratio: 10
+  C_conf: 1.5
+  kf_overlap: 0.7
+  use_kf_BA: False
+  nonkf_refinement_iters: 200
+  text_prompt: "pure blue water without object"
+  use_segmodel: True
+  track_water_mask: True
+  use_pyramid: True
+  pyramid_num: 4
+  GSBA_iter_perframe: 500
+  GSBA_window: 10
+  use_depth_loss: False
+  use_iso_loss: False
+  voxel_size: 0.35
+  min_lc_size: 10
+
+opt_params:
+  pose_lr: 0.0001
+  position_lr_init: 0.00016
+  position_lr_final: 0.0000016
+  position_lr_max_steps: 26000
+  feature_lr: 0.0025
+  opacity_lr: 0.05
+  scaling_lr: 0.001
+  rotation_lr: 0.001
+  exposure_lr: 0.01
+  medium_lr: 0.001
+  medium_eps: 1e-15
+  percent_dense: 0.01
+  lambda_dssim: 0.2
+  densify_grad_threshold: 0.000005
+  densify_iter_ratio: 0.8
+
+color_refine:
+  max_gaussian_points: 300000
+  sh_max: 0
+  config_sh_degree_interval: 1000
+  clip_thresh: 0.01
+  color_refinement_iters: 400
+  refine_every: 100
+  gaussian_update_every: 100
+  gaussian_update_offset: 0
+  densify_grad_threshold: 0.000005
+  gaussian_th_refine: 0.5
+  gaussian_extent_refine: 5
+  size_threshold_refine: 100
+  cull_alpha_thresh: 0.5
+  cull_alpha_thresh_post: 0.1
+  reset_alpha_thresh: 0.01
+  cull_scale_thresh: 12
+  reset_alpha_every: 5
+  densify_grad_thresh: 0.0008
+  densify_size_thresh: 0.001
+  n_split_samples: 2
+  cull_screen_size: 60
+  split_screen_size: 0.05
+  stop_screen_size_at: 5000
+  stop_split_at: 10000
+  densify_until_iter: 15_000
+  densify_from_iter: 500
+  densification_interval: 100
+  opacity_reset_interval: 3000
+  cameras_extent: 10
+
+debug_config:
+  debug: False
+  debug_showImage: False
+  debug_showid: False
