@@ -1,11 +1,12 @@
-# setup.py 
-from setuptools import setup
+# setup.py
+from setuptools import find_packages, setup
 from torch.utils.cpp_extension import BuildExtension, CUDAExtension
 
 setup(
     name='cudalight',
     version='0.1',
     description='LLSU CUDA extension',
+    packages=find_packages(include=['cudalight', 'cudalight.*']),
     ext_modules=[
         CUDAExtension(
             name='cudalight._C',
