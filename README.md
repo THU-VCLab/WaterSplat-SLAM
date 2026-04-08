@@ -33,9 +33,9 @@ Specifically, we combine semantic medium filtering with a dual-view 3D reconstru
 ### Prerequisites
 
 - Linux (tested on Ubuntu 20.04)
-- Python 3.10
+- Python 3.11
 - CUDA 11.8+ (tested with CUDA 11.8)
-- GPU with at least 8GB VRAM (12GB+ recommended)
+- GPU with at least 24GB VRAM (16GB+ recommended)
 
 ### Step 1: Clone the Repository
 
@@ -52,8 +52,8 @@ git submodule update --init --recursive
 ### Step 2: Create Conda Environment
 
 ```bash
-conda env create -f environment.yaml
-conda activate WaterSplat-SLAM
+conda create --name watersplat-slam python=3.11
+conda activate watersplat-slam
 ```
 
 ### Step 3: Install PyTorch
@@ -62,30 +62,43 @@ Install PyTorch with the appropriate CUDA version:
 
 ```bash
 # CUDA 11.8 (default, recommended)
-pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu118
+conda install pytorch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1  pytorch-cuda=11.8 -c pytorch -c nvidia
 
 # CUDA 12.1
-pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu121
+conda install pytorch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 pytorch-cuda=12.1 -c pytorch -c nvidia
 
 # CUDA 12.4
-pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu124
+conda install pytorch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 pytorch-cuda=12.4 -c pytorch -c nvidia
 ```
+
+
+
+
 
 ### Step 4: Install Third-party Dependencies
 
 ```bash
+pip install -r requirements.txt
+
 # Install MASt3R (3D reconstruction backbone)
-pip install -e thirdparty/mast3r
+pip install --no-build-isolation -e thirdparty/mast3r
 
 # Install in3d (visualization utilities)
-pip install -e thirdparty/in3d
+cd thirdparty
+pip install --no-build-isolation -e in3d
+cd ..
 
 # Install fused-ssim (CUDA-accelerated SSIM loss)
 pip install --no-build-isolation thirdparty/fused-ssim
 
+# Install simple-knn
+pip install --no-build-isolation thirdparty/simple-knn/
+
 # Install lietorch (Lie group operations)
-pip install lietorch@git+https://github.com/princeton-vl/lietorch.git
+pip install --no-build-isolation lietorch@git+https://github.com/princeton-vl/lietorch.git
 ```
+
+
 
 ### Step 5: Build SLAM Backend (CUDA extensions)
 
@@ -111,6 +124,7 @@ Required for the medium MLP network encoding:
 
 ```bash
 pip install ninja
+pip install setuptools==50.1.0
 git clone --recursive https://github.com/NVlabs/tiny-cuda-nn
 cd tiny-cuda-nn
 cmake . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo
@@ -137,8 +151,9 @@ wget https://download.europe.naverlabs.com/ComputerVision/MASt3R/MASt3R_ViTLarge
 Download the CLIPSeg weight for water segmentation:
 
 ```bash
-mkdir -p weights/
-wget https://owncloud.gwdg.de/index.php/s/ioHbRzFx6th32hn/download -O weights/rd64-uni.pth
+wget https://owncloud.gwdg.de/index.php/s/ioHbRzFx6th32hn/download -O weights.zip
+unzip -d weights -j weights.zip
+rm -rf weights.zip
 ```
 
 ## Usage

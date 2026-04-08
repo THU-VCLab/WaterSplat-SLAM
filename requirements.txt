@@ -1,0 +1,19 @@
+opencv-python==4.8.1.78
+munch
+trimesh
+evo==1.11.0
+open3d==0.18.0
+imgviz
+PyOpenGL==3.1.9
+glfw
+PyGLM
+wandb
+rich
+ruff
+torchmetrics
+lpips
+openai-clip
+torchcodec==0.1
+# lietorch@git+https://github.com/princeton-vl/lietorch.git
+# thirdparty/in3d
+# thirdparty/mast3r
