@@ -1,12 +1,15 @@
 opencv-python==4.8.1.78
 munch
-trimesh
+trimesh[easy]
 evo==1.11.0
 open3d==0.18.0
 imgviz
 PyOpenGL==3.1.9
 glfw
 PyGLM
+Cython>=0.24,<0.30
+wheel
+setuptools==64.0.0
 wandb
 rich
 ruff
