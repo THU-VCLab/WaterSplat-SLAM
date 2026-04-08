@@ -1,9 +1,9 @@
 from pathlib import Path
 from setuptools import setup
 
-curope = Path(__file__).parent / "dust3r" / "croco" / "models" / "curope"
+curope = (Path(__file__).parent / "dust3r" / "croco" / "models" / "curope").resolve()
 
-asmk = Path(__file__).parent / "asmk"
+asmk = (Path(__file__).parent / "asmk").resolve()
 setup(
     install_requires=[
         "scikit-learn",
