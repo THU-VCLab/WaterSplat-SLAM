@@ -141,6 +141,8 @@ dmypy.json
 /object_images/
 
 # Local tools and editor settings
+/.codex
+/.codex/
 /.vscode/
 /.idea/
 
