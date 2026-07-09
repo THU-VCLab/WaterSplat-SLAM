@@ -20,6 +20,49 @@ Shaofeng Zou<sup>*</sup> ·
     <a href="https://arxiv.org/pdf/####">Paper</a> | <a href="#">Project Page</a>
 </h3> -->
 
+## Video Demos
+
+The following videos show online SLAM reconstruction and rendering results. The
+Pool Loop sequence highlights the loop-closure behavior of WaterSplat-SLAM.
+
+### Panama Sequence
+
+<table>
+  <tr>
+    <td align="center"><strong>WaterSplat-SLAM (Ours)</strong></td>
+    <td align="center"><strong>MonoGS</strong></td>
+    <td align="center"><strong>HI-SLAM</strong></td>
+  </tr>
+  <tr>
+    <td>
+      <video src="videos/panama_ours.mp4" controls muted width="100%"></video>
+    </td>
+    <td>
+      <video src="videos/monogs_panama.mp4" controls muted width="100%"></video>
+    </td>
+    <td>
+      <video src="videos/hislam_panama.mp4" controls muted width="100%"></video>
+    </td>
+  </tr>
+</table>
+
+### Pool Loop Sequence
+
+<table>
+  <tr>
+    <td align="center"><strong>WaterSplat-SLAM (Ours)</strong></td>
+    <td align="center"><strong>HI-SLAM</strong></td>
+  </tr>
+  <tr>
+    <td>
+      <video src="videos/pool_loop_ours.mp4" controls muted width="100%"></video>
+    </td>
+    <td>
+      <video src="videos/pool_loop_hislam.mp4" controls muted width="100%"></video>
+    </td>
+  </tr>
+</table>
+
 <div align="center">
     <img alt="WaterSplat-SLAM" src=".assets/pipeline.png" />
 </div>
