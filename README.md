@@ -20,6 +20,14 @@ Shaofeng Zou<sup>*</sup> ·
     <a href="https://arxiv.org/pdf/####">Paper</a> | <a href="#">Project Page</a>
 </h3> -->
 
+<div align="center">
+    <img alt="WaterSplat-SLAM" src=".assets/pipeline.png" />
+</div>
+
+<p align="justify"> Underwater monocular SLAM is a highly challenging problem with applications ranging from autonomous underwater vehicles to marine archaeology. However, existing underwater SLAM methods struggle to generate high-fidelity rendered maps. We propose WaterSplat-SLAM, the first novel monocular underwater SLAM system to achieve robust pose estimation and photorealistic dense map construction to our knowledge.
+Specifically, we combine semantic medium filtering with a dual-view 3D reconstruction prior to achieve underwater adaptive camera tracking and depth estimation. Furthermore, we propose a semantically guided rendering and adaptive map management strategy, combined with an online medium-aware Gaussian map, to model the underwater environment in a photorealistic and compact manner. Experiments on multiple underwater datasets demonstrate that WaterSplat-SLAM achieves robust camera tracking and high-fidelity rendering in underwater environments.
+</p>
+
 ## Video Demos
 
 The following videos show online SLAM reconstruction and rendering results. The
@@ -62,14 +70,6 @@ Pool Loop sequence highlights the loop-closure behavior of WaterSplat-SLAM.
     </td>
   </tr>
 </table>
-
-<div align="center">
-    <img alt="WaterSplat-SLAM" src=".assets/pipeline.png" />
-</div>
-
-<p align="justify"> Underwater monocular SLAM is a highly challenging problem with applications ranging from autonomous underwater vehicles to marine archaeology. However, existing underwater SLAM methods struggle to generate high-fidelity rendered maps. We propose WaterSplat-SLAM, the first novel monocular underwater SLAM system to achieve robust pose estimation and photorealistic dense map construction to our knowledge.
-Specifically, we combine semantic medium filtering with a dual-view 3D reconstruction prior to achieve underwater adaptive camera tracking and depth estimation. Furthermore, we propose a semantically guided rendering and adaptive map management strategy, combined with an online medium-aware Gaussian map, to model the underwater environment in a photorealistic and compact manner. Experiments on multiple underwater datasets demonstrate that WaterSplat-SLAM achieves robust camera tracking and high-fidelity rendering in underwater environments.
-</p>
 
 ## Installation
 
