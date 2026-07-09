@@ -24,31 +24,24 @@ Shaofeng Zou<sup>*</sup> ·
 
 The following videos show online SLAM reconstruction and rendering results. The
 Pool Loop sequence highlights the loop-closure behavior of WaterSplat-SLAM.
-Click each thumbnail to play the corresponding video.
 
 ### Panama Sequence
 
 <table>
   <tr>
-    <td align="center"><strong>WaterSplat-SLAM (Ours)</strong></td>
-    <td align="center"><strong>MonoGS</strong></td>
-    <td align="center"><strong>HI-SLAM</strong></td>
+    <td align="center" width="33%"><strong>WaterSplat-SLAM (Ours)</strong></td>
+    <td align="center" width="33%"><strong>MonoGS</strong></td>
+    <td align="center" width="33%"><strong>HI-SLAM</strong></td>
   </tr>
   <tr>
     <td align="center">
-      <a href="videos/panama_ours.mp4">
-        <img src=".assets/videos/panama_ours.jpg" alt="WaterSplat-SLAM on Panama" width="100%">
-      </a>
+      <video src="videos/panama_ours.mp4" controls muted width="320" height="260"></video>
     </td>
     <td align="center">
-      <a href="videos/monogs_panama.mp4">
-        <img src=".assets/videos/monogs_panama.jpg" alt="MonoGS on Panama" width="100%">
-      </a>
+      <video src="videos/monogs_panama.mp4" controls muted width="320" height="260"></video>
     </td>
     <td align="center">
-      <a href="videos/hislam_panama.mp4">
-        <img src=".assets/videos/hislam_panama.jpg" alt="HI-SLAM on Panama" width="100%">
-      </a>
+      <video src="videos/hislam_panama.mp4" controls muted width="320" height="260"></video>
     </td>
   </tr>
 </table>
@@ -57,19 +50,15 @@ Click each thumbnail to play the corresponding video.
 
 <table>
   <tr>
-    <td align="center"><strong>WaterSplat-SLAM (Ours)</strong></td>
-    <td align="center"><strong>HI-SLAM</strong></td>
+    <td align="center" width="50%"><strong>WaterSplat-SLAM (Ours)</strong></td>
+    <td align="center" width="50%"><strong>HI-SLAM</strong></td>
   </tr>
   <tr>
     <td align="center">
-      <a href="videos/pool_loop_ours.mp4">
-        <img src=".assets/videos/pool_loop_ours.jpg" alt="WaterSplat-SLAM on Pool Loop" width="100%">
-      </a>
+      <video src="videos/pool_loop_ours.mp4" controls muted width="480" height="390"></video>
     </td>
     <td align="center">
-      <a href="videos/pool_loop_hislam.mp4">
-        <img src=".assets/videos/pool_loop_hislam.jpg" alt="HI-SLAM on Pool Loop" width="100%">
-      </a>
+      <video src="videos/pool_loop_hislam.mp4" controls muted width="480" height="390"></video>
     </td>
   </tr>
 </table>
