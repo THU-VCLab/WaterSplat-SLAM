@@ -17,6 +17,7 @@ torchmetrics
 lpips
 openai-clip
 torchcodec==0.1
+jaxtyping
 # lietorch@git+https://github.com/princeton-vl/lietorch.git
 # thirdparty/in3d
 # thirdparty/mast3r

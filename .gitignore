@@ -1,6 +1,3 @@
-checkpoints/
-weights/
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -131,32 +128,30 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-ckpt/
-datasets
-logs/
+# Local datasets, checkpoints, and generated results
+/datasets/
+/lowlight_datasets
+/WaterSplat_datasets
+/checkpoints
+/weights/
+/ckpt/
+/logs/
+/outputs/
+/screenshots/
+/object_images/
+
+# Local tools and editor settings
+/.vscode/
+/.idea/
+
+# Runtime and profiling files
 *.prof
 screen.yaml
 *.pt
 *.ini
 notebooks/*
-
-# vscode
-.vscode/*
-checkpoints/*
-/checkpoints/
-/.vscode/
-checkpoints
-.idea/*
-
-datasets_sea
-/screenshots/
-
-outputs/psnr/after_opt/final_result_kf.json
-psnr/final_result.json
-
-# outputs and images
-outputs/*
-object_images/*
+/datasets_sea/
+/psnr/final_result.json
 
 # docs 
 docs/

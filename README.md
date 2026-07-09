@@ -7,13 +7,13 @@ IEEE Robotics and Automation Letters (RA-L), 2026
 </h3>
 
 <p align="center">
-Kangxu Wang<sup>*</sup> · 
-Shaofeng Zou<sup>*</sup> · 
-Chenxing Jiang<sup>*</sup> · 
-Yixiang Dai · 
-Siang Chen · 
-Shaojie Shen · 
-Guijin Wang<sup>†</sup>
+<a href="https://github.com/KX-Wang77">Kangxu Wang</a><sup>*</sup> ·
+Shaofeng Zou<sup>*</sup> ·
+<a href="https://jiang-cx.github.io/">Chenxing Jiang</a><sup>*</sup> ·
+<a href="https://github.com/THU-VCLab">Yixiang Dai</a> ·
+<a href="https://chenthree.github.io/">Siang Chen</a> ·
+<a href="https://uav.hkust.edu.hk/">Shaojie Shen</a> ·
+<a href="https://web.ee.tsinghua.edu.cn/wangguijin/zh_CN/index.htm">Guijin Wang</a><sup>†</sup>
 </p>
 
 <!-- <h3 align="center">
@@ -124,7 +124,6 @@ Required for the medium MLP network encoding:
 
 ```bash
 pip install ninja
-pip install setuptools==50.1.0
 git clone --recursive https://github.com/NVlabs/tiny-cuda-nn
 cd tiny-cuda-nn
 cmake . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo
@@ -156,102 +155,102 @@ unzip -d weights -j weights.zip
 rm -rf weights.zip
 ```
 
-## Usage
+## Datasets
 
-### Running on Underwater Datasets
+We evaluate WaterSplat-SLAM on two groups of underwater datasets. After
+downloading and extracting them, organize the repository as shown below. The
+dataset directories may also be symbolic links to data stored elsewhere.
+
+### SeaThru-NeRF
+
+[SeaThru-NeRF](https://sea-thru-nerf.github.io/) is the CVPR 2023 dataset used
+for the four real underwater scenes below. Download it from the
+[official dataset link](https://drive.google.com/uc?export=download&id=1RzojBFvBWjUUhuJb95xJPSNP3nJwZWaT)
+on the project page, then arrange the extracted scenes as follows:
+
+```text
+lowlight_datasets/
+├── 4_Curasao/
+│   ├── images_wb/
+│   └── sparse/0/
+├── 5_IUI3-RedSea/
+│   ├── Images_wb/
+│   └── sparse/0/
+├── 6_JapaneseGradens-RedSea/
+│   ├── images_wb/
+│   └── sparse/0/
+└── 7_Panama/
+    ├── images_wb/
+    └── sparse/0/
+```
+
+The directory names above match the provided scene configurations. Note that
+`JapaneseGradens` is retained in the local directory name for compatibility.
+
+### WaterSplat-SLAM Dataset
+
+Our captured dataset can be downloaded from
+[Google Drive](https://drive.google.com/file/d/12fhEbn_WAv9ZsdYO3Lrt4OKQA0EP2FG6/view?usp=drive_link).
+Extract the archive and place the four scene directories under
+`WaterSplat_datasets/`:
+
+```text
+WaterSplat_datasets/
+├── big_gate/
+│   ├── images/
+│   └── sparse/0/
+├── pipe_local/
+│   ├── images/
+│   └── sparse/0/
+├── pool_up2/
+│   ├── images/
+│   └── sparse/0/
+└── pool_loop/
+    ├── images/
+    └── sparse/0/
+```
+
+Each `sparse/0/` directory must contain the COLMAP binary model:
+
+```text
+sparse/0/
+├── cameras.bin
+├── images.bin
+└── points3D.bin
+```
+
+For our captured scenes, both the camera intrinsics and the ground-truth camera
+trajectory were estimated using COLMAP. WaterSplat-SLAM reads the intrinsics
+from `cameras.bin` and the reference poses from `images.bin`. The scene now
+named `pool_loop` corresponds to the dataset previously called
+`undistorted5`.
+
+## Running
+
+Run a scene with its corresponding configuration:
 
 ```bash
-python main.py --dataset <path_to_dataset> --config config/Panama.yaml
+# SeaThru-NeRF
+python main.py --dataset lowlight_datasets/4_Curasao --config config/Curasao.yaml
+python main.py --dataset lowlight_datasets/5_IUI3-RedSea --config config/RedSea.yaml
+python main.py --dataset lowlight_datasets/6_JapaneseGradens-RedSea --config config/Jap_RedSea.yaml
+python main.py --dataset lowlight_datasets/7_Panama --config config/Panama.yaml
+
+# WaterSplat-SLAM Dataset
+python main.py --dataset WaterSplat_datasets/big_gate --config config/big_gate.yaml
+python main.py --dataset WaterSplat_datasets/pipe_local --config config/pipe_local.yaml
+python main.py --dataset WaterSplat_datasets/pool_up2 --config config/pool_up2.yaml
+python main.py --dataset WaterSplat_datasets/pool_loop --config config/pool_loop.yaml
 ```
 
-**Command-line arguments:**
-
-| Argument | Description | Default |
-|----------|-------------|---------|
-| `--dataset` | Path to the dataset directory (or video file) | — |
-| `--config` | Path to config YAML file | `config/base.yaml` |
-| `--save-as` | Name for saving results | `default` |
-| `--device`       | CUDA device                                   | `cuda:0`           |
-| `--dataset_type` | Dataset format                                | `auto`             |
-
-**Supported dataset formats:**
-
-| Type | Description | Auto-detected |
-|------|-------------|---------------|
-| `colmap` | COLMAP sparse reconstruction with images | Yes (if `sparse/0/images.bin` exists) |
-| `tum` | TUM RGB-D format (`rgb.txt` + images) | Yes (if path contains "tum") |
-| `euroc` | EuRoC MAV format | Yes (if path contains "euroc") |
-| `eth3d` | ETH3D format | Yes (if path contains "eth3d") |
-| `7-scenes` | Microsoft 7-Scenes | Yes (if path contains "7-scenes") |
-| `mp4` | Video file (`.mp4`, `.avi`, `.mov`) | Yes (by file extension) |
-| `rgbfiles` | Directory of PNG/JPG images (no calibration) | Yes (fallback if >10 images found) |
-| `realsense` | Intel RealSense live camera | No (must specify `--dataset_type realsense`) |
-| `webcam` | USB webcam live capture | No (must specify `--dataset_type webcam`) |
-
-When `--dataset_type` is omitted or set to `auto`, the system detects the format from the dataset path. For datasets with custom intrinsics (e.g., ROV cameras), use `--dataset_type rgbfiles` with `--calib` pointing to a calibration YAML file.
-
-### Example: Single Scene
+To run every available scene in both dataset roots:
 
 ```bash
-python main.py --dataset /path/to/SeathruNeRF/Panama --config config/Panama.yaml
+bash scripts/run_our_data.sh lowlight_datasets WaterSplat_datasets
 ```
 
-Scene-specific configs are provided in `config/` for SeathruNeRF scenes (Panama, Curasao, Jap_RedSea, RedSea) and WaterSplat-SLAM scenes (pool_up, pool_up2, 5_pool, pipe_local, big_gate, undistorted5).
-
-### Batch Evaluation
-
-Run all underwater datasets at once:
-
-```bash
-bash scripts/run_our_data.sh /path/to/dataset_root
-```
-
-This script automatically finds and runs all available scenes under the given root directory with their corresponding configs.
-
-### Example: Custom Underwater Data
-
-**Option 1: COLMAP format (recommended, with calibration)**
-
-```
-your_dataset/
-├── images/          # RGB images
-└── sparse/
-    └── 0/           # COLMAP sparse reconstruction
-        ├── cameras.bin (or cameras.txt)
-        ├── images.bin (or images.txt)
-        └── points3D.bin (or points3D.txt)
-```
-
-```bash
-python main.py --dataset /path/to/your_dataset --config config/base.yaml
-```
-
-**Option 2: Image folder with external calibration**
-
-For cameras with known intrinsics (e.g., ROV, GoPro), place images in a folder and provide a calibration YAML:
-
-```yaml
-# my_calib.yaml
-width: 1920
-height: 1080
-calibration: [fx, fy, cx, cy]  # or [fx, fy, cx, cy, k1, k2, p1, p2] with distortion
-```
-
-```bash
-python main.py --dataset /path/to/image_folder --calib my_calib.yaml --dataset_type rgbfiles
-```
-
-**Option 3: Video file**
-
-```bash
-python main.py --dataset /path/to/video.mp4 --config config/base.yaml
-```
-
-Note: Video input runs without camera calibration by default. For better accuracy, provide calibration via `--calib`.
-
-### Output
-
-Results are saved to `output.base_dir` specified in config:
+Missing scenes are skipped by the batch script. Results are written to the
+`output.base_dir` specified by each scene configuration.
 ## Acknowledgements
 
 This project builds upon several excellent works:

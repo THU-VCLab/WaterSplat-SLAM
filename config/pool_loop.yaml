@@ -15,12 +15,16 @@ training:
   use_iso_loss: True
   kf_overlap: 0.7
   nonkf_refinement_iters: 50
-  text_prompt: "blue door."
+  text_prompt: "pure blue gate."
   compensate_exposure: True
   new_mapping_iter: 50
   normal_mapping_iters: 20
   opacity_thre: 0.99
 
+color_refine:
+  color_refinement_iters: 150
+  gaussian_th_refine: 0.3
+
 save_results: True
 output:
-  base_dir: "outputs/5_pool"
+  base_dir: "outputs/pool_loop"
