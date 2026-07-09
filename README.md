@@ -24,6 +24,7 @@ Shaofeng Zou<sup>*</sup> ·
 
 The following videos show online SLAM reconstruction and rendering results. The
 Pool Loop sequence highlights the loop-closure behavior of WaterSplat-SLAM.
+Click each thumbnail to play the corresponding video.
 
 ### Panama Sequence
 
@@ -34,14 +35,20 @@ Pool Loop sequence highlights the loop-closure behavior of WaterSplat-SLAM.
     <td align="center"><strong>HI-SLAM</strong></td>
   </tr>
   <tr>
-    <td>
-      <video src="videos/panama_ours.mp4" controls muted width="100%"></video>
+    <td align="center">
+      <a href="videos/panama_ours.mp4">
+        <img src=".assets/videos/panama_ours.jpg" alt="WaterSplat-SLAM on Panama" width="100%">
+      </a>
     </td>
-    <td>
-      <video src="videos/monogs_panama.mp4" controls muted width="100%"></video>
+    <td align="center">
+      <a href="videos/monogs_panama.mp4">
+        <img src=".assets/videos/monogs_panama.jpg" alt="MonoGS on Panama" width="100%">
+      </a>
     </td>
-    <td>
-      <video src="videos/hislam_panama.mp4" controls muted width="100%"></video>
+    <td align="center">
+      <a href="videos/hislam_panama.mp4">
+        <img src=".assets/videos/hislam_panama.jpg" alt="HI-SLAM on Panama" width="100%">
+      </a>
     </td>
   </tr>
 </table>
@@ -54,11 +61,15 @@ Pool Loop sequence highlights the loop-closure behavior of WaterSplat-SLAM.
     <td align="center"><strong>HI-SLAM</strong></td>
   </tr>
   <tr>
-    <td>
-      <video src="videos/pool_loop_ours.mp4" controls muted width="100%"></video>
+    <td align="center">
+      <a href="videos/pool_loop_ours.mp4">
+        <img src=".assets/videos/pool_loop_ours.jpg" alt="WaterSplat-SLAM on Pool Loop" width="100%">
+      </a>
     </td>
-    <td>
-      <video src="videos/pool_loop_hislam.mp4" controls muted width="100%"></video>
+    <td align="center">
+      <a href="videos/pool_loop_hislam.mp4">
+        <img src=".assets/videos/pool_loop_hislam.jpg" alt="HI-SLAM on Pool Loop" width="100%">
+      </a>
     </td>
   </tr>
 </table>
