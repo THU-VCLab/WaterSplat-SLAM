@@ -37,19 +37,25 @@ Pool Loop sequence highlights the loop-closure behavior of WaterSplat-SLAM.
 
 <table>
   <tr>
-    <td align="center" width="33%"><strong>WaterSplat-SLAM (Ours)</strong></td>
-    <td align="center" width="33%"><strong>MonoGS</strong></td>
     <td align="center" width="33%"><strong>HI-SLAM</strong></td>
+    <td align="center" width="33%"><strong>MonoGS</strong></td>
+    <td align="center" width="33%"><strong>WaterSplat-SLAM (Ours)</strong></td>
   </tr>
   <tr>
     <td align="center">
-      <video src="videos/panama_ours.mp4" controls muted width="320" height="260"></video>
+      <video controls muted loop playsinline preload="metadata" width="320" height="260">
+        <source src="videos/hislam_panama.mp4" type="video/mp4">
+      </video>
     </td>
     <td align="center">
-      <video src="videos/monogs_panama.mp4" controls muted width="320" height="260"></video>
+      <video controls muted loop playsinline preload="metadata" width="320" height="260">
+        <source src="videos/monogs_panama.mp4" type="video/mp4">
+      </video>
     </td>
     <td align="center">
-      <video src="videos/hislam_panama.mp4" controls muted width="320" height="260"></video>
+      <video controls muted loop playsinline preload="metadata" width="320" height="260">
+        <source src="videos/panama_ours.mp4" type="video/mp4">
+      </video>
     </td>
   </tr>
 </table>
@@ -58,15 +64,19 @@ Pool Loop sequence highlights the loop-closure behavior of WaterSplat-SLAM.
 
 <table>
   <tr>
-    <td align="center" width="50%"><strong>WaterSplat-SLAM (Ours)</strong></td>
     <td align="center" width="50%"><strong>HI-SLAM</strong></td>
+    <td align="center" width="50%"><strong>WaterSplat-SLAM (Ours)</strong></td>
   </tr>
   <tr>
     <td align="center">
-      <video src="videos/pool_loop_ours.mp4" controls muted width="480" height="390"></video>
+      <video controls muted loop playsinline preload="metadata" width="480" height="390">
+        <source src="videos/pool_loop_hislam.mp4" type="video/mp4">
+      </video>
     </td>
     <td align="center">
-      <video src="videos/pool_loop_hislam.mp4" controls muted width="480" height="390"></video>
+      <video controls muted loop playsinline preload="metadata" width="480" height="390">
+        <source src="videos/pool_loop_ours.mp4" type="video/mp4">
+      </video>
     </td>
   </tr>
 </table>
