@@ -190,7 +190,7 @@ The directory names above match the provided scene configurations. Note that
 ### WaterSplat-SLAM Dataset
 
 Our captured dataset can be downloaded from
-[Google Drive](https://drive.google.com/file/d/12fhEbn_WAv9ZsdYO3Lrt4OKQA0EP2FG6/view?usp=drive_link).
+[Google Drive](https://drive.google.com/file/d/12fhEbn_WAv9ZsdYO3Lrt4OKQA0EP2FG6/view?usp=sharing).
 Extract the archive and place the four scene directories under
 `WaterSplat_datasets/`:
 
