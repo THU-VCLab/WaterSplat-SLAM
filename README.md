@@ -221,9 +221,7 @@ sparse/0/
 
 For our captured scenes, both the camera intrinsics and the ground-truth camera
 trajectory were estimated using COLMAP. WaterSplat-SLAM reads the intrinsics
-from `cameras.bin` and the reference poses from `images.bin`. The scene now
-named `pool_loop` corresponds to the dataset previously called
-`undistorted5`.
+from `cameras.bin` and the reference poses from `images.bin`.
 
 ## Running
 
