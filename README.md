@@ -10,9 +10,9 @@ IEEE Robotics and Automation Letters (RA-L), 2026
 <a href="https://github.com/KX-Wang77">Kangxu Wang</a><sup>*</sup> ·
 Shaofeng Zou<sup>*</sup> ·
 <a href="https://jiang-cx.github.io/">Chenxing Jiang</a><sup>*</sup> ·
-<a href="https://github.com/THU-VCLab">Yixiang Dai</a> ·
+<a href="https://github.com/Ryan-DAI01">Yixiang Dai</a> ·
 <a href="https://chenthree.github.io/">Siang Chen</a> ·
-<a href="https://uav.hkust.edu.hk/">Shaojie Shen</a> ·
+<a href="https://seng.hkust.edu.hk/about/people/faculty/shaojie-shen">Shaojie Shen</a> ·
 <a href="https://web.ee.tsinghua.edu.cn/wangguijin/zh_CN/index.htm">Guijin Wang</a><sup>†</sup>
 </p>
 
