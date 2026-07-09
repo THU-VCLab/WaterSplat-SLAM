@@ -130,7 +130,7 @@ dmypy.json
 
 # Local datasets, checkpoints, and generated results
 /datasets/
-/lowlight_datasets
+/SeaThruNeRF_datasets
 /WaterSplat_datasets
 /checkpoints
 /weights/

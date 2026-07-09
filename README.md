@@ -169,7 +169,7 @@ for the four real underwater scenes below. Download it from the
 on the project page, then arrange the extracted scenes as follows:
 
 ```text
-lowlight_datasets/
+SeaThruNeRF_datasets/
 ├── 4_Curasao/
 │   ├── images_wb/
 │   └── sparse/0/
@@ -231,10 +231,10 @@ Run a scene with its corresponding configuration:
 
 ```bash
 # SeaThru-NeRF
-python main.py --dataset lowlight_datasets/4_Curasao --config config/Curasao.yaml
-python main.py --dataset lowlight_datasets/5_IUI3-RedSea --config config/RedSea.yaml
-python main.py --dataset lowlight_datasets/6_JapaneseGradens-RedSea --config config/Jap_RedSea.yaml
-python main.py --dataset lowlight_datasets/7_Panama --config config/Panama.yaml
+python main.py --dataset SeaThruNeRF_datasets/4_Curasao --config config/Curasao.yaml
+python main.py --dataset SeaThruNeRF_datasets/5_IUI3-RedSea --config config/RedSea.yaml
+python main.py --dataset SeaThruNeRF_datasets/6_JapaneseGradens-RedSea --config config/Jap_RedSea.yaml
+python main.py --dataset SeaThruNeRF_datasets/7_Panama --config config/Panama.yaml
 
 # WaterSplat-SLAM Dataset
 python main.py --dataset WaterSplat_datasets/big_gate --config config/big_gate.yaml
@@ -246,7 +246,7 @@ python main.py --dataset WaterSplat_datasets/pool_loop --config config/pool_loop
 To run every available scene in both dataset roots:
 
 ```bash
-bash scripts/run_our_data.sh lowlight_datasets WaterSplat_datasets
+bash scripts/run_our_data.sh SeaThruNeRF_datasets WaterSplat_datasets
 ```
 
 Missing scenes are skipped by the batch script. Results are written to the
