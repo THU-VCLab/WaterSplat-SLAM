@@ -20,6 +20,11 @@ Shaofeng Zou<sup>*</sup> ·
     <a href="https://arxiv.org/pdf/####">Paper</a> | <a href="#">Project Page</a>
 </h3> -->
 
+### News
+
+- **2026-07-14**: WaterSplat-SLAM won the **Best Paper Award** at [Mapping the Reef: Underwater 3D Reconstruction for Coral Ecosystems @ RSS 2026](https://alejandrofontan.github.io/Mapping-the-Reef-RSS26/).
+- **2026-02-04**: WaterSplat-SLAM was accepted by **IEEE Robotics and Automation Letters (RA-L) 2026**.
+
 <div align="center">
     <img alt="WaterSplat-SLAM" src=".assets/pipeline.png" />
 </div>
@@ -30,53 +35,20 @@ Specifically, we combine semantic medium filtering with a dual-view 3D reconstru
 
 ## Video Demos
 
-The following videos show online SLAM reconstruction and rendering results. The
+The following GIFs show online SLAM reconstruction and rendering results. The
 Pool Loop sequence highlights the loop-closure behavior of WaterSplat-SLAM.
 
-### Panama Sequence
-
 <table>
   <tr>
-    <td align="center" width="33%"><strong>HI-SLAM</strong></td>
-    <td align="center" width="33%"><strong>MonoGS</strong></td>
-    <td align="center" width="33%"><strong>WaterSplat-SLAM (Ours)</strong></td>
+    <td align="center" width="50%"><strong>Panama Sequence</strong></td>
+    <td align="center" width="50%"><strong>Pool Loop Sequence</strong></td>
   </tr>
   <tr>
     <td align="center">
-      <video controls muted loop playsinline preload="metadata" width="320" height="260">
-        <source src="videos/hislam_panama.mp4" type="video/mp4">
-      </video>
+      <img src="videos/panama_ours.gif" alt="WaterSplat-SLAM on the Panama sequence" width="100%">
     </td>
     <td align="center">
-      <video controls muted loop playsinline preload="metadata" width="320" height="260">
-        <source src="videos/monogs_panama.mp4" type="video/mp4">
-      </video>
-    </td>
-    <td align="center">
-      <video controls muted loop playsinline preload="metadata" width="320" height="260">
-        <source src="videos/panama_ours.mp4" type="video/mp4">
-      </video>
-    </td>
-  </tr>
-</table>
-
-### Pool Loop Sequence
-
-<table>
-  <tr>
-    <td align="center" width="50%"><strong>HI-SLAM</strong></td>
-    <td align="center" width="50%"><strong>WaterSplat-SLAM (Ours)</strong></td>
-  </tr>
-  <tr>
-    <td align="center">
-      <video controls muted loop playsinline preload="metadata" width="480" height="390">
-        <source src="videos/pool_loop_hislam.mp4" type="video/mp4">
-      </video>
-    </td>
-    <td align="center">
-      <video controls muted loop playsinline preload="metadata" width="480" height="390">
-        <source src="videos/pool_loop_ours.mp4" type="video/mp4">
-      </video>
+      <img src="videos/pool_loop_ours.gif" alt="WaterSplat-SLAM loop-closure demo on the Pool Loop sequence" width="100%">
     </td>
   </tr>
 </table>
