@@ -46,7 +46,7 @@ def evaluate_evo(poses_gt, poses_est, plot_dir, label, monocular=False):
     ape_metric.process_data(data)
     ape_stat = ape_metric.get_statistic(metrics.StatisticsType.rmse)
     ape_stats = ape_metric.get_all_statistics()
-    Log("RMSE ATE \[m]", ape_stat, tag="Eval")
+    Log("RMSE ATE [m]", ape_stat, tag="Eval")
 
     with open(
         os.path.join(plot_dir, "stats_{}.json".format(str(label))),
@@ -423,54 +423,3 @@ def imshow(image,title):
 
     cv2.imshow(title, (rgb_show * 255).astype(np.uint8))
     cv2.waitKey(1)
-
-
-if __name__ == "__main__":
-    trj_gt_np = [
-        np.array([
-            [1., 0., 0., 0.],
-            [0., 1., 0., 0.],
-            [0., 0., 1., 0.],
-            [0., 0., 0., 1.]
-        ]),
-        np.array([
-            [0.96182513, -0.20738088, 0.17856538, -2.83185178],
-            [0.23712227, 0.95728337, -0.1654738, 3.09259154],
-            [-0.13662157, 0.20149869, 0.96991382, -1.69780678],
-            [0., 0., 0., 1.]
-        ]),
-        np.array([
-            [0.96182513, -0.20738088, 0.17856538, -2.83185178],
-            [0.23712227, 0.95728337, -0.1654738, 3.09259154],
-            [-0.13662157, 0.20149869, 0.96991382, -1.69780678],
-            [0., 0., 0., 1.]
-        ])
-    ]
-
-    trj_est_np = [
-        np.array([
-            [1., 0., 0., 0.],
-            [0., 1., 0., 0.],
-            [0., 0., 1., 0.],
-            [0., 0., 0., 1.]
-        ]),
-        np.array([
-            [0.96182513, -0.20738088, 0.17856538, -2.83185178],
-            [0.23712227, 0.95728337, -0.1654738, 3.09259154],
-            [-0.13662157, 0.20149869, 0.96991382, -1.69780678],
-            [0., 0., 0., 1.]
-        ])
-    ]
-
-    plot_dir = '/home/asus/slam/WaterSplatting-SLAM/outputs/Panama/plot'
-    label_evo = 'after_opt'
-    monocular = True
-
-    ate = evaluate_evo(
-        poses_gt=trj_gt_np,
-        poses_est=trj_est_np,
-        plot_dir=plot_dir,
-        label=label_evo,
-        monocular=monocular,
-    )
-    print("ATE RMSE:", ate)

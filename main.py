@@ -254,13 +254,14 @@ def run_wt_gs_backend(cfg, gs_backend: WTGSBackEnd, states, keyframes, dataset, 
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dataset", default="datasets/tum/rgbd_dataset_freiburg1_desk")
+    parser.add_argument("--dataset", default="SeaThruNeRF_datasets/4_Curasao")
     parser.add_argument("--config", default="config/base.yaml")
     parser.add_argument("--save-as", default="default")
     parser.add_argument("--viz", action="store_true")
     parser.add_argument("--calib", default="")
     parser.add_argument("--dataset_type", default=None,
-                        help="Options: colmap, tum, euroc, eth3d, 7-scenes, realsense, webcam, mp4, rgbfiles")
+                        help="Dataset type. Use 'colmap' for the released SeaThru-NeRF and WaterSplat datasets. "
+                             "Other supported legacy options: tum, euroc, eth3d, 7-scenes, realsense, webcam, mp4, rgbfiles.")
     parser.add_argument("--device", default="cuda:0")
     parser.add_argument("--save-frames", action="store_true")
     return parser.parse_args()

@@ -179,9 +179,6 @@ def create_frame(i, img, T_WC, img_size=512, device="cuda:0", segmodel=None, tex
     # red_water_mask = np.zeros((water_mask.shape[0], water_mask.shape[1], 3), dtype=np.float32)
     # red_water_mask[water_mask.squeeze().cpu().numpy()] = [255, 0, 0]  # 将水面区域设置为红色
 
-    # cv2.imwrite("/home/robolab/Watersplatting-SLAM/water_images/mask" + str(i) + ".jpg", cv2.cvtColor(red_water_mask, cv2.COLOR_RGB2BGR))
-    # cv2.imwrite("/home/robolab/Watersplatting-SLAM/water_images/fig" + str(i) + ".jpg", cv2.cvtColor(water_image, cv2.COLOR_RGB2BGR))
-    # cv2.imwrite("/home/robolab/Watersplatting-SLAM/object_images/fig" + str(i) + ".jpg", cv2.cvtColor(object_image, cv2.COLOR_RGB2BGR))
     # frame = Frame(i, rgb, img_shape, img_true_shape, uimg, water_mask.cpu(), T_WC)
     frame = Frame(
         frame_id=i,

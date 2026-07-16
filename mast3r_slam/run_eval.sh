@@ -1,18 +1,22 @@
 #!/bin/bash
 
-# scenes="office0 office1 office2 office3 office4 room0 room1 room2"
-# scenes="big_gate Cursao JapRedSea panama RedSea pipe_local pool_up pool_up2 undistorted5"#traj_kf.txt
-scenes="pool_up pool_up2 undistorted5 5_pool"
-# scenes="undistorted5"
-data_path="/home/robolab/Watersplatting-SLAM/ours_underwater/17_blue_rov"
-refpose_path="/home/robolab/HI-SLAM2/outputs"
+if [ "$#" -lt 3 ]; then
+  echo "Usage: bash mast3r_slam/run_eval.sh <dataset_root> <output_root> <scene1> [scene2 ...]"
+  echo "Example: bash mast3r_slam/run_eval.sh WaterSplat_datasets outputs pool_loop"
+  exit 1
+fi
 
-echo "Start evaluating on Sea dataset..."
+data_path="$1"
+refpose_path="$2"
+shift 2
+scenes="$@"
+
+echo "Start evaluating trajectories..."
 
 for sc in ${scenes}
 do
   echo Running on $sc ...
-    python evo_eval.py \
+    python mast3r_slam/evo_eval.py \
     --colmap_pose_dir "${data_path}/${sc}" \
     --ref_pose_dir "${refpose_path}/${sc}/traj_full.txt" \
     --save_dir "${refpose_path}/${sc}" \

@@ -106,7 +106,7 @@ def plot_3d_trajectory_with_colormap(
     plt.savefig(os.path.join(plot_dir, f"evo_3dplot_{label}.png"), dpi=120)
     plt.show()
 
-def evaluate_evo(poses_gt, poses_est, timestamp_ref, timestamp_gt, plot_dir, label, monocular=True):
+def evaluate_evo(poses_gt, poses_est, plot_dir, label, timestamp_ref=None, timestamp_gt=None, monocular=True):
     """
     :param poses_gt:
     :param poses_est:
@@ -115,10 +115,11 @@ def evaluate_evo(poses_gt, poses_est, timestamp_ref, timestamp_gt, plot_dir, lab
     :param monocular:
     :return:ape_error
     """
-    # traj_ref = PosePath3D(poses_se3=poses_gt)
-    # traj_est = PosePath3D(poses_se3=poses_est)
-    # we have align the traject, so we use the same timestamp
-    #timestamps = np.arange(len(poses_gt))
+    if timestamp_ref is None:
+        timestamp_ref = np.arange(len(poses_gt))
+    if timestamp_gt is None:
+        timestamp_gt = np.arange(len(poses_est))
+
     traj_ref = PoseTrajectory3D(poses_se3=poses_gt, timestamps=timestamp_ref)
     traj_est = PoseTrajectory3D(poses_se3=poses_est, timestamps=timestamp_gt)
 
@@ -133,7 +134,7 @@ def evaluate_evo(poses_gt, poses_est, timestamp_ref, timestamp_gt, plot_dir, lab
     ape_metric.process_data(data)
     ape_stat = ape_metric.get_statistic(metrics.StatisticsType.rmse)
     ape_stats = ape_metric.get_all_statistics()
-    print("RMSE ATE \[m]", ape_stat)
+    print("RMSE ATE [m]", ape_stat)
 
     with open(
         os.path.join(plot_dir, "stats_{}.json".format(str(label))),
@@ -296,7 +297,7 @@ def align_namestamps(gt_poses:dict,ref_poses:dict):
     align_gt_pose = [] # np list
     align_ref_pose = [] # np list
 
-    for val in gt_path.values():
+    for val in gt_poses.values():
         align_gt_pose.append(val)
     for val in ref_poses.values():
         align_ref_pose.append(val)
@@ -305,9 +306,12 @@ def align_namestamps(gt_poses:dict,ref_poses:dict):
 
 if __name__ == "__main__":
     params = argparse.ArgumentParser()
-    params.add_argument("--colmap_pose_dir", default=None)
-    params.add_argument("--ref_pose_dir", default=None)
-    params.add_argument("--save_dir", default=None)
+    params.add_argument("--colmap_pose_dir", required=True,
+                        help="Dataset root containing the COLMAP sparse model and images.")
+    params.add_argument("--ref_pose_dir", required=True,
+                        help="Estimated trajectory txt file to evaluate.")
+    params.add_argument("--save_dir", required=True,
+                        help="Directory for trajectory plots and statistics.")
     params.add_argument("--data_name", default="test")
     params.add_argument("--image_subdir",default="images")
     params.add_argument("--sparse_dir",default="sparse/0")
@@ -320,14 +324,6 @@ if __name__ == "__main__":
     plot_dir = args.save_dir
     label_evo = args.data_name
 
-    colmap_dir = "/home/robolab/Watersplatting-SLAM/ours_underwater/17_blue_rov/undistorted5"
-    ref_dir = "/home/robolab/HI-SLAM2/outputs/undistorted5/traj_kf.txt"
-    sparse_dir = "sparse/0"
-    image_subdir = "images"
-    plot_dir = "/home/robolab/HI-SLAM2/outputs/undistorted5/"
-    label_evo = "undistorted5"
-
-
     _, gt_dicts = read_colmap(pathlib.Path(colmap_dir),sparse_dir,image_subdir)
     _, ref_image_idlists, ref_pose_dict = read_txt(ref_dir)
     gt_poses, ref_poses = align_timestamps(gt_dicts, ref_pose_dict)
@@ -338,10 +334,9 @@ if __name__ == "__main__":
     ate = evaluate_evo(
         poses_gt=gt_poses,
         poses_est=ref_poses,
-        timestamp_gt=np.arange(len(gt_poses)),
-        timestamp_ref=ref_image_idlists,
         plot_dir=plot_dir,
         label=label_evo,
+        timestamp_ref=np.arange(len(gt_poses)),
+        timestamp_gt=ref_image_idlists,
         monocular=True,
     )
-
